@@ -1,18 +1,34 @@
 
 const pokeApi = {}
 
-pokeApi.getPokemonsDetail = (async (pokemon) => {
-    const response = await fetch(pokemon.url)
-    return await response.json()
-})
+function convertPokeApiDetailToPokemon(pokeDetail){
+    const pokemon = new Pokemon()
+    pokemon.number = pokeDetail.id
+    pokemon.name = pokeDetail.name
 
-pokeApi.getPokemons = async (offset = 0, limit = 45) => {
+    const types = pokemon.types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
+    const [type] = types
+
+    pokemon.types = types
+    pokemon.type = type
+    pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
+
+    return pokemon
+}
+
+pokeApi.getPokemonDetail = async (pokemon) => {
+    const response = await fetch(pokemon.url)
+    const pokeDetail = await response.json()
+    return convertPokeApiDetailToPokemon(pokeDetail)
+}
+
+pokeApi.getPokemons = async (offset = 0, limit = 100) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
     const response = await fetch(url)
     const jsonBody = await response.json()
     const pokemons = jsonBody.results
-    const detailRequests = pokemons.map(pokeApi.getPokemonsDetail)
+    const detailRequests = pokemons.map(pokeApi.getPokemonDetail)
     const pokemonsDetails = await Promise.all(detailRequests)
     return pokemonsDetails
 }

@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #7d818b;
+    background-color: #a1c4e7;
 }
 
 .content {
@@ -17,7 +17,7 @@ body {
 @media screen and (min-width: 992px) {
     .content {
         max-width: 992px;
-        height: auto;
+        height: 100%;
         margin: 1rem auto;
         border-radius: 1rem;
     }

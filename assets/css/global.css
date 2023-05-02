@@ -1,15 +1,15 @@
-*{
+* {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #f6f8fc;
 }
 
-.content{
+.content {
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     padding: 1rem;
     background-color: #fff;
 }

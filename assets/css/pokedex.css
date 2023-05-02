@@ -144,6 +144,7 @@
     padding: .4rem .5rem;
     margin: .25rem 0;
     font-size: .9rem;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 350px) {

@@ -1,4 +1,4 @@
 # Pokedex
 
 
-Link: https://jan1ooo.github.io/pokedex/
+Link: https://janioofi.github.io/pokedex/
